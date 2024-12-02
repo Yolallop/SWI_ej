@@ -1,0 +1,33 @@
+        [{
+    "pelicula": "Spider-Man",
+    "dirigida":"JonWatts",
+    "actores": " Tom Holland y Zendaya",
+    "Sitios": [
+        { 
+        "Sala" : "17", 
+        "Horas":[ "17:00", "20:15"]
+        } ,
+        { 
+        "Sala" : "20", 
+        "Horas": ["18:00" , "21:15"]
+       } 
+    ]
+    },
+{
+
+    "pelicula" : "The Matrix Resurrections", 
+    "dirigida" :  "Lana Wachowski" ,
+    "actores":[" Keanu Reeves ", " Carrie-Anne Moss"], 
+    "sitios" : [
+        {
+        "sala" : "5", 
+        "hora" : "19:15"
+        },
+        {
+            "sala" : "22", 
+            "hora" : "22:30"  
+        }
+    ]
+}
+]
+##TENER ENCUENTA Q SI PONEMOS  "dirigida":"JonWatts", Y ABAJO HAY 2 DIREIFIGAS PONEMOS ARRAY ARRIBA TMB ARRAY 

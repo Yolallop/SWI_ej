@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseña</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+        }
+        .container { 
+            border: 1px solid green; 
+            padding: 10px; 
+            margin: 20px; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JS – Ejercicio 1</h1>
+
+    <div class="container">
+        <label for="WordCount">Número de palabras (1-10):</label>
+        <input type="number" id="WordCount" min="1" max="10" value="4">
+        <button onclick="generatePassword()">Generar Contraseña</button>
+    </div>
+
+    <p id="passwordDisplay" class="container"></p>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

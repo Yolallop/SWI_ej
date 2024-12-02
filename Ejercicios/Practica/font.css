@@ -1,0 +1,15 @@
+h1{
+    background-color :yellow;
+}
+
+section ul,
+section table {
+    background-color: lightyellow;
+}
+.sidebar  {
+
+width : 500px;
+color : blue; 
+height: 100px;
+
+}
