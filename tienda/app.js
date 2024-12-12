@@ -4,12 +4,13 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 const session = require('express-session');
-const  cookieRouter = require('./routes/cookie');
 
 let indexRouter = require('./routes/index');
 let loginRouter = require('./routes/login');
 let restrictedRouter = require('./routes/restricted');
-let registroRouter = require('./routes/registro');
+let registroRouter = require("./routes/registro.js");
+
+
 let app = express();
 
 // view engine setup
@@ -38,18 +39,18 @@ app.use(function(req, res, next){
   if (message) res.locals.message = `<p>${message}</p>`;
   next();
 });
-app.use('/cookie', cookieRouter);
+
+app.use("/registro", registroRouter);
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/restricted', restrict, restrictedRouter);
-app.use('/registro', registroRouter);
 app.use('/logout', function(req, res, next){
   req.session.destroy(function(){
     res.redirect("/");
   })
 })
 
-function restrict(req, res, next){
+function restrict(req, res, next){ //Middleware 
   if(req.session.user){
     next();
   } else {
