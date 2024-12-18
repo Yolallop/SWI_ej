@@ -1,0 +1,303 @@
+/*1. Recuadro con sombras y borde redondeado
+Este ejemplo crea un recuadro con un borde redondeado, color de fondo y sombra para darle profundidad.
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuadro Creativo</title>
+    <style>
+        .recuadro {
+            width: 300px;
+            height: 200px;
+            background-color: #f0f8ff;
+            border: 5px solid #1e90ff;
+            border-radius: 20px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 30px auto;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="recuadro">
+        <h2>Este es un recuadro</h2>
+        <p>Con sombra, borde redondeado y un fondo bonito.</p>
+    </div>
+</body>
+</html>
+2. Línea con números cambiables (usando counter en CSS)
+Este ejemplo muestra cómo crear una lista numerada con CSS, y puedes cambiar los números desde el CSS sin tener que tocarlos en el HTML.
+
+html
+Copiar código
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Línea con Números</title>
+    <style>
+        ol {
+            counter-reset: item;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+        }
+        ol li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        ol li::before {
+            content: counter(item) ". ";
+            counter-increment: item;
+            font-weight: bold;
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+    <ol>
+        <li>Primer elemento</li>
+        <li>Segundo elemento</li>
+        <li>Tercer elemento</li>
+        <li>Cuarto elemento</li>
+    </ol>
+</body>
+</html>
+3. Un botón con animación al hacer hover
+Aquí tienes un ejemplo de un botón que cambia de color y agranda cuando pasas el cursor por encima.
+
+html
+Copiar código
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón Animado</title>
+    <style>
+        .btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">Haz clic aquí</button>
+</body>
+</html>
+4. Efecto de fondo con gradiente y animación de texto
+Un efecto más avanzado con un fondo que cambia y un texto que se mueve.
+
+html
+Copiar código
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fondo Animado y Texto</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ff0066, #ffcc00, #66ccff);
+            background-size: 600% 600%;
+            animation: gradient 10s ease infinite;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            font-size: 50px;
+            animation: moveText 5s ease-in-out infinite;
+        }
+
+        @keyframes moveText {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Texto con Animación y Fondo Dinámico</h1>
+</body>
+</html>
+5. Caja de texto con bordes interactivos
+Un campo de texto que cambia el borde al hacer foco (cuando haces clic en él).
+
+html
+Copiar código
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja de Texto Interactiva</title>
+    <style>
+        .input-box {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-box:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="input-box" placeholder="Escribe algo aquí...">
+</body>
+</html>
+
+6. Una tarjeta con sombra y efecto hover
+Un diseño de tarjeta que muestra una sombra que se amplía cuando se pasa el cursor sobre ella.
+
+html
+Copiar código
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta Creativa</title>
+    <style>
+        .tarjeta {
+            width: 250px;
+            height: 350px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .tarjeta:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .titulo {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .contenido {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="tarjeta">
+        <div class="titulo">Mi Tarjeta</div>
+        <div class="contenido">
+            <p>Este es un ejemplo de una tarjeta con efecto hover.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+Ejemplo de Barra de Navegación (Navbar) con estilos modernos y efectos hover:
+Este es un ejemplo de cómo crear una barra de navegación con enlaces, efectos de hover, un diseño limpio y un aspecto responsivo (que se adapta a dispositivos móviles):
+
+html
+Copiar código
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Navegación</title>
+    <style>
+        /* Barra de navegación */
+       /* body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #1e90ff;
+            transform: scale(1.1);
+        }
+
+        /* Barra de navegación responsiva (adaptable a dispositivos móviles) */
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <ul>
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#services">Servicios</a></li>
+            <li><a href="#about">Acerca de</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </nav>
+
+</body>
+</html>*/
