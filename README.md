@@ -302,5 +302,131 @@ game_snake.js
   </table>
 </div>
 <%- include("footer", {}) %>
+app
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
 
+let indexRouter = require('./routes/index');
+let loginRouter = require('./routes/login');
+let gamesRouter = require('./routes/games');
+let gameSnakeRouter = require('./routes/game_snake');
+
+let app = express();
+
+app.locals.title = "Gaming!";
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: "El string que queráis",
+  resave: false,
+  saveUninitialized: true
+}));
+app.use((req,res,next) => {
+  const message = req.session.message;
+  const error = req.session.error;
+  delete req.session.message;
+  delete req.session.error;
+  res.locals.message = "";
+  res.locals.error = "";
+  if(message){res.locals.message = `<p>${message}</p>`};
+  if(error){res.locals.error = `<p>${error}</p>`};
+  next();
+});
+
+app.use('/', indexRouter);
+app.use('/login', loginRouter);
+app.use('/games', checkLogin, gamesRouter);
+app.use('/gameSnake', checkLogin, gameSnakeRouter);
+app.use('/logout', (req,res) => {
+  req.session.destroy();
+  res.redirect('/');
+});
+
+//Comprobar si el usuario ha iniciado sesión
+function checkLogin(req, res, next){
+  if(req.session.user){
+    next();
+  } else {
+    res.redirect('login');
+  }
+}
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
+nav 
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><%= title %></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <% if (user) {%>
+          <li class="nav-item">
+          <a class="nav-link" href="/games">Games</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        <% } else {%>
+          <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+        <% } %>
+      </ul>
+      <% if (user) {%>
+          <div>Welcome <%= user.username %>!</div>
+      <% } %>
+    </div>
+  </div>
+</nav>
+log.ejs
+<%- include("header", {}) %>
+<%- include("navbar", {}) %>
+<div class="container">
+  <h1>LOGIN</h1>
+  <form action="/login" method="post">
+    <div class="mb-3">
+      <label for="user">Username</label>
+      <input type="text" class="form-control" name="user" id="user" placeholder="Username">
+      <small class="form-text text-muted">We'll never share your data with anyone else.</small>
+    </div>
+    <div class="mb-3">
+      <label for="pass">Password</label>
+      <input type="password" class="form-control" name="pass" id="pass" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<%- include("footer", {}) %>
 
