@@ -279,3 +279,220 @@ Copiar código
 .notification.show {
     display: block; /* Muestra cuando se agrega la clase 'show' */
 }
+
+CAJA CON BOTON SEND Y LISTA: CHAT
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Simple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chat-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #messages {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ccc;
+            margin-top: 0;
+        }
+
+        #messages li {
+            padding: 5px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        form {
+            display: flex;
+        }
+
+        #input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #4682b4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <ul id="messages"></ul>
+        <form id="form">
+            <input id="input" type="text" placeholder="Escribe tu mensaje..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        // Seleccionamos los elementos
+        const form = document.getElementById('form');
+        const input = document.getElementById('input');
+        const messages = document.getElementById('messages');
+
+        // Cuando se envía el formulario
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitamos que la página se recargue al enviar el formulario
+
+            const messageText = input.value; // Tomamos el texto del input
+
+            if (messageText.trim() !== "") { // Solo agregamos el mensaje si no está vacío
+                const li = document.createElement('li'); // Creamos un nuevo elemento de lista
+                li.textContent = messageText; // Establecemos el texto del mensaje
+                messages.appendChild(li); // Agregamos el mensaje a la lista de mensajes
+                input.value = ''; // Limpiamos el campo de texto después de enviar el mensaje
+            }
+
+            input.focus(); // Focamos de nuevo en el input
+        });
+    </script>
+
+</body>
+</html>
+SIN LISTA SOLO LA CAJA Y EL BOTON <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Simple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chat-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .messages {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        form {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        #input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #4682b4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <!-- Área donde aparecerán los mensajes -->
+        <div class="messages" id="messages"></div>
+        
+        <!-- Formulario con el campo de entrada y el botón -->
+        <form id="form">
+            <input id="input" type="text" placeholder="Escribe tu mensaje..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        // Seleccionamos los elementos
+        const form = document.getElementById('form');
+        const input = document.getElementById('input');
+        const messages = document.getElementById('messages');
+
+        // Cuando se envía el formulario
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitamos que la página se recargue al enviar el formulario
+
+            const messageText = input.value; // Tomamos el texto del input
+
+            if (messageText.trim() !== "") { // Solo agregamos el mensaje si no está vacío
+                const messageDiv = document.createElement('div'); // Creamos un nuevo contenedor para el mensaje
+                messageDiv.classList.add('message'); // Agregamos una clase de estilo
+                messageDiv.textContent = messageText; // Establecemos el texto del mensaje
+                messages.appendChild(messageDiv); // Agregamos el mensaje al contenedor
+
+                input.value = ''; // Limpiamos el campo de texto después de enviar el mensaje
+            }
+
+            input.focus(); // Focamos de nuevo en el input
+        });
+    </script>
+
+</body>
+</html>
