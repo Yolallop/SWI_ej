@@ -1,4 +1,4 @@
-# SWI_ej
+# SWI_ej fivhero.game continue una funcion q ahora mismo se esta invocando desde el jeugo Snake cuanod se termina la partida. MOdifique esa funcion para q se envie tanto la puntuacion final  q ha conseguido el jugador como el nombre del juego a la ruta /games 
 games = {};
 
 games.data = {};
