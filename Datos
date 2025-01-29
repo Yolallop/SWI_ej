@@ -150,4 +150,22 @@ router.post('/add', (req, res) => {
 
     res.status(201).send({ message: "Juego añadido", game: newGame });
 });
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+router.get('/id/:id', (req, res) => {
+    const gameId = req.params.id; // Obtenemos el ID de la URL
+
+    // Accedemos directamente a game.data usando el ID
+    const game = game.data[gameId];
+
+    if (!game) {
+        return res.status(404).send('Juego no encontrado');
+    }
+
+    res.render('gamesDetail', { 
+        title: 'Detalles del Juego',
+        game: game,
+        user: req.session.user
+    });
+});
+
 
