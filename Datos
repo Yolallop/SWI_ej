@@ -1,0 +1,51 @@
+🔹 Opción 1: database.games como un objeto (usa Object.values() para buscar)
+En este caso, los juegos están guardados en un objeto, donde las claves son los identificadores (id).
+
+javascript
+
+const database = {
+    games: {
+        1: { id: 1, name: "Catan", genre: "Estrategia" },
+        2: { id: 2, name: "Monopoly", genre: "Finanzas" },
+        3: { id: 3, name: "Uno", genre: "Cartas" }
+    }
+};
+🔍 Cómo buscar un juego por nombre en esta estructura:
+javascript
+
+const gameName = "Catan";
+const game = Object.values(database.games).find(g => g.name === gameName);
+
+console.log(game);
+📌 Salida:
+
+javascript
+
+{ id: 1, name: "Catan", genre: "Estrategia" }
+✅ Se necesita Object.values() para convertir el objeto en un array y poder buscar con .find().
+
+🔹 Opción 2: database.games como un array (NO necesita Object.values())
+En este caso, los juegos están guardados en un array, lo cual es más fácil para recorrer y buscar.
+
+javascript
+
+const database = {
+    games: [
+        { id: 1, name: "Catan", genre: "Estrategia" },
+        { id: 2, name: "Monopoly", genre: "Finanzas" },
+        { id: 3, name: "Uno", genre: "Cartas" }
+    ]
+};
+🔍 Cómo buscar un juego por nombre en esta estructura:
+javascript
+
+const gameName = "Catan";
+const game = database.games.find(g => g.name === gameName);
+
+console.log(game);
+📌 Salida:
+
+javascript
+
+{ id: 1, name: "Catan", genre: "Estrategia" }
+✅ NO necesitas Object.values() porque database.games ya es un array y .find() funciona directamente.
