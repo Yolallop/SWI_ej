@@ -49,3 +49,105 @@ javascript
 
 { id: 1, name: "Catan", genre: "Estrategia" }
 ✅ NO necesitas Object.values() porque database.games ya es un array y .find() funciona directamente.
+
+
+
+
+
+
+
+ARRAY
+
+var express = require('express');
+var router = express.Router();
+const database = require('../database'); // Asegúrate de que este módulo contiene la lista de juegos
+
+// Ruta GET para buscar juego por nombre
+router.get('/:name', (req, res) => {
+    const gameName = req.params.name;
+
+    // Buscamos directamente en el array de juegos
+    const game = database.games.find(g => g.name === gameName);
+
+    if (!game) {
+        return res.status(404).send('Juego no encontrado');
+    }
+
+    res.render('gamesDetail', { 
+        title: 'Detalles del Juego',
+        game: game,
+        user: req.session.user
+    });
+});
+
+module.exports = router;
+
+
+
+OBJETO 
+
+var express = require('express');
+var router = express.Router();
+const database = require('../database'); // Asegúrate de que este módulo contiene la lista de juegos
+
+// Ruta GET para buscar juego por nombre
+router.get('/:name', (req, res) => {
+    const gameName = req.params.name;
+
+    // Convertimos el objeto en un array y buscamos por nombre
+    const game = Object.values(database.games).find(g => g.name === gameName);
+
+    if (!game) {
+        return res.status(404).send('Juego no encontrado');
+    }
+
+    res.render('gamesDetail', { 
+        title: 'Detalles del Juego',
+        game: game,
+        user: req.session.user
+    });
+});
+
+module.exports = router;
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+OBJETO  
+const game = {
+    data: {
+        1: { id: 1, name: "Catan", genre: "Estrategia" },
+        2: { id: 2, name: "Monopoly", genre: "Finanzas" },
+        3: { id: 3, name: "Uno", genre: "Cartas" }
+    }
+
+console.log(game.data[1]); // { id: 1, name: "Catan", genre: "Estrategia" }
+console.log(game.data[2]); // { id: 2, name: "Monopoly", genre: "Finanzas" }
+console.log(game.data[3]); // { id: 3, name: "Uno", genre: "Cartas" }
+
+};
+// Definir el nuevo juego
+const newGame = { id: 4, name: "Risk", genre: "Estrategia" };
+
+// Agregarlo a game.data con una nueva clave numérica
+game.data[4] = newGame;
+
+console.log(game.data);
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+router.post('/add', (req, res) => {
+    const { name, genre } = req.body; // Obtenemos el nombre y género desde la solicitud
+
+    if (!name || !genre) {
+        return res.status(400).send('Faltan datos');
+    }
+
+    // Obtener un nuevo ID automáticamente (máximo ID actual + 1)
+    const newId = Math.max(...Object.keys(game.data).map(Number)) + 1;
+
+    // Crear el nuevo juego
+    const newGame = { id: newId, name, genre };
+
+    // Agregarlo a game.data
+    game.data[newId] = newGame;
+
+    res.status(201).send({ message: "Juego añadido", game: newGame });
+});
+
