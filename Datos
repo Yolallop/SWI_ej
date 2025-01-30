@@ -170,6 +170,100 @@ router.get('/id/:id', (req, res) => {
 hohnobiubiib
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+
+COGER DATOS 
+const database = {
+    games: {
+        1: { id: 1, name: "Catan", genre: "Estrategia" },
+        2: { id: 2, name: "Monopoly", genre: "Finanzas" },
+        3: { id: 3, name: "Uno", genre: "Cartas" }
+    },
+    // Función para guardar un nuevo juego
+    saveGame: function (name, genre) {
+        const newId = Object.keys(this.games).length + 1; // Generar nuevo ID
+        const newGame = { id: newId, name, genre };
+        this.games[newId] = newGame; // Guardar en la base de datos
+        return newGame; // Retornar el juego recién creado
+    }
+};
+
+module.exports = database; // Exportar la base de datos para usarla en el router
+
+
+
+
+const express = require("express");
+const router = express.Router();
+const database = require("./database"); // Importar la "base de datos"
+
+// Ruta POST para guardar un nuevo juego
+router.post("/games/add", (req, res) => {
+    const { name, genre } = req.body; // Obtener datos del cuerpo de la solicitud
+
+    // Validación básica
+    if (!name || !genre) {
+        return res.status(400).json({ error: "El nombre y el género son obligatorios." });
+    }
+
+    // Guardar el nuevo juego en la base de datos
+    const newGame = database.saveGame(name, genre);
+
+    // Enviar la respuesta con el juego creado
+    res.status(201).json({
+        message: "Juego añadido con éxito.",
+        game: newGame
+    });
+});
+
+module.exports = router; // Exportar el router
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Juego</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Enlace opcional para estilos -->
+</head>
+<body>
+    <h1>Agregar un Nuevo Juego</h1>
+
+    <!-- Formulario para añadir un juego -->
+    <form action="/api/games/add" method="POST">
+        <label for="name">Nombre del Juego:</label><br>
+        <input type="text" id="name" name="name" placeholder="Escribe el nombre" required><br><br>
+
+        <label for="genre">Género:</label><br>
+        <input type="text" id="genre" name="genre" placeholder="Escribe el género" required><br><br>
+
+        <button type="submit">Guardar Juego</button>
+    </form>
+
+    <hr>
+
+    <!-- Lista de juegos existentes -->
+    <h2>Lista de Juegos</h2>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Género</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% Object.keys(games).forEach(function(gameId) { %>
+                <tr>
+                    <td><%= games[gameId].id %></td>
+                    <td><%= games[gameId].name %></td>
+                    <td><%= games[gameId].genre %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------------------------
 <!DOCTYPE html>
 <html lang="es">
 <head>
