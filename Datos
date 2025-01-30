@@ -168,4 +168,113 @@ router.get('/id/:id', (req, res) => {
     });
 });
 hohnobiubiib
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ejemplo complejo para practicar errores avanzados en HTML">
+    <title>Prueba de Examen</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenido a Mi Web</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="https://example.com" target="_blank">Página externa</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h2>Últimas Noticias</h2>
+            <p>En este artículo, hablaremos sobre las últimas <b>actualizaciones <i>en tecnología</i></b>.</p>
+            <img src="imagen.jpg" alt="Foto de tecnología">
+        </article>
+
+        <section>
+            <h2>Formulario de Registro</h2>
+            <form action="procesar_form.php" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" minlength="3" required>  
+                
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" name="correo" id="correo" required pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$">
+                
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="pais">País:</label>
+                <select name="pais" id="pais">
+                    <option value="">Selecciona tu país</option>
+                    <option value="es">España</option>
+                    <option value="mx">México</option>
+                </select>
+
+                <label for="terminos">
+                    <input type="checkbox" id="terminos" name="terminos"> Acepto los términos y condiciones
+                </label>
+                <br>
+                <input type="submit" value="Registrarse">
+            </form>
+        </section>
+
+        <section>
+            <h2>Lista de Productos</h2>
+            <ol>
+                <li>Producto 1</li>
+                <li>Producto 2</li>
+                <li>Producto 3</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Tabla de Precios</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Computadora</td>
+                        <td>$1000</td>
+                    </tr>
+                    <tr>
+                        <td>Teléfono</td>
+                        <td>$600</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Contenido Multimedia</h2>
+            <audio src="audio.mp3" controls autoplay>
+                <p>Tu navegador no soporta el elemento de audio.</p>
+            </audio>
+            <video controls>
+                <source src="video.mp4" type="video/mp4">
+                <p>Tu navegador no soporta el elemento de video.</p>
+            </video>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mi Sitio Web</p>
+        <p>Contacto: <a href="mailto:info@ejemplo.com">info@ejemplo.com</a></p>
+    </footer>
+</body>
+</html>
+
 
