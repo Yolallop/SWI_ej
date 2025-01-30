@@ -373,3 +373,56 @@ div {
     border-radius: 10px;
 }
 
+--------------------------------------------------------BARRAS 
+<h1>Barra de Progreso</h1>
+
+<!-- Contenedor de la barra -->
+<div id="progress-container">
+    <div id="progress-bar"></div>
+</div>
+
+<!-- Slider para mover la barra -->
+<input type="range" id="progress-slider" min="0" max="100" value="50">
+
+<script>
+    const slider = document.getElementById("progress-slider");
+    const progressBar = document.getElementById("progress-bar");
+
+    slider.addEventListener("input", function () {
+        progressBar.style.width = this.value + "%";
+    });
+</script>
+
+/* Contenedor de la barra */
+#progress-container {
+    width: 80%;
+    max-width: 500px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+/* Barra de progreso */
+#progress-bar {
+    width: 50%; /* Progreso inicial */
+    height: 100%;
+    background-color: #28a745;
+    transition: width 0.3s ease-in-out;
+}
+
+/* Slider */
+#progress-slider {
+    width: 80%;
+    max-width: 500px;
+    margin: 20px auto;
+    -webkit-appearance: none; /* Quitar estilo predeterminado */
+    appearance: none;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
