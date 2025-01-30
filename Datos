@@ -357,3 +357,19 @@ div {
     background-size: cover;
     background-position: center;
 }
+/* Margen externo */
+.box {
+    margin: 20px;
+}
+
+/* Espaciado interno */
+.box {
+    padding: 10px;
+}
+
+/* Bordes */
+.box {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
