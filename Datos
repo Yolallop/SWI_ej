@@ -276,5 +276,84 @@ hohnobiubiib
     </footer>
 </body>
 </html>
+-----------------------------------------------------------------------------------------------
+CSS
+7. Estilos para formularios
+css
+
+/* Estilo de los inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Cambiar borde al hacer clic */
+input:focus {
+    border-color: blue;
+}
+
+/* Estilos para el botón de enviar */
+input[type="submit"] {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Botón al pasar el mouse */
+input[type="submit"]:hover {
+    background-color: darkgreen;
+}
+📦 8. Uso de Flexbox
 
 
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+}
+
+/* Centrar elementos en flexbox */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+🎯 9. Uso de Grid CSS
+css
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+/* Estilos para los elementos del grid */
+.grid-item {
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* Color de texto */
+h1 {
+    color: red;
+}
+
+/* Fondo con color */
+body {
+    background-color: #f4f4f4;
+}
+
+/* Fondo con imagen */
+div {
+    background-image: url("imagen.jpg");
+    background-size: cover;
+    background-position: center;
+}
