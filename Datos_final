@@ -16,3 +16,31 @@ LO Q HE ECHO YO ANTES
 
   </table>
 <%- include("footer", {}) %>
+
+
+----------------------------------  COMMENTS
+En tu enlace, /games/catan está fijo, pero debería ser dinámico dependiendo del nombre del juego.
+Puedes usar <%= juegos[name].name %> dentro del href, pero hay que asegurarse de que el nombre no tenga espacios o caracteres no URL-amigables.
+- Se agregó una tabla (<table>) correctamente estructurada.
+- Se corrigió la generación del enlace dinámico:
+juegos[name].name.replace(/\s+/g, '-').toLowerCase() convierte los espacios en - y pone el nombre en minúsculas para una mejor URL.
+Por ejemplo, si el juego es "Los Colonos de Catan", el enlace será:
+href="/games/los-colonos-de-catan"
+
+---------------------------------- CODIGO ARREGLADO:
+
+<%- include("header", {}) %>
+<h1>Lista de juegos de mesa</h1>
+
+<table>
+  <% for (let name in juegos) { %>
+    <tr>
+      <td><%= juegos[name].name %></td>
+      <td>de <%= juegos[name].minDuracion %> - <%= juegos[name].maxDuracion %> minutos</td>
+      <td>para <%= juegos[name].minJugadores %> - <%= juegos[name].maxJugadores %> jugadores</td>
+      <td><a href="/games/<%= juegos[name].name.replace(/\s+/g, '-').toLowerCase() %>">Más información</a></td>
+    </tr>
+  <% } %>
+</table>
+
+<%- include("footer", {}) %>
