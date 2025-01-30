@@ -1,1 +1,18 @@
 
+en cada elemnto de la lista creada en el apartad anterior , añada un enlace que lleve a una pagina donde se va a mostarr toda l informacion detalalda del jeugo el enlace debe tener texto mas infromacion y llevar a l ruta /games/nombrejuego donde nombrejuego es el nombre del jeugo corrspondionete por ejemplo /games/catan 
+LO Q HE ECHO YO ANTES
+<%- include("header", {}) %>
+<h1>Lista de juegos de mesa </h1>
+
+    
+<% for (let name in juegos) { %>
+  <div>
+    <tr>
+      <td><%= juegos[name].name %> , </td> <a href="/games/catan">nuestra tienda</a>
+      <td>de <%= juegos[name].minDuracion %> -<%= juegos[name].maxDuracion %>minutos,</td>
+      <td>para<%= juegos[name].minJugadores %> - <%= juegos[name].maxJugadores %>jugadores</td>
+    <% } %>
+    </tr>
+
+  </table>
+<%- include("footer", {}) %>
